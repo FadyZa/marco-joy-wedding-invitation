@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joy & Marco — The Wedding Invitation</title>
+  <meta name="description"
+    content="You are cordially invited to celebrate the wedding of Joy and Marco. View details, story, timeline, and RSVP.">
+
+  <link rel="shortcut icon" href="./assets/images/wax-seal.png" type="image/x-icon">
+
+  <!-- Open Graph / WhatsApp / Messenger / Facebook -->
+  <meta property="og:title" content="Joy & Marco — The Wedding Invitation">
+  <meta property="og:description" content="You are cordially invited to celebrate the wedding of Joy and Marco.">
+  <meta property="og:image" content="./assets/images/img-2.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Joy & Marco Wedding">
+
+
+  <!-- Preload fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=Pinyon+Script&display=swap"
+    rel="stylesheet">
+
+  <!-- CSS Styling -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="custom-cursor" id="customCursor"></div>
+  <div class="custom-cursor-dot" id="customCursorDot"></div>
+
+  <!-- Background Music Element -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="./assets/audio/Luminary.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Floating Audio Controls -->
+  <div class="floating-controls">
+    <button class="music-toggle-btn" id="musicToggle" aria-label="Toggle Music">
+      <svg class="music-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="1.5"
+        fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 18V5l12-2v13"></path>
+        <circle cx="6" cy="18" r="3"></circle>
+        <circle cx="18" cy="16" r="3"></circle>
+      </svg>
+      <div class="music-bars" id="musicBars">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </button>
+  </div>
+
+  <!-- Viewport Corner Flowers (Fixed frame on the screen) -->
+  <div class="flower-corner top-left">
+    <svg viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Ornate leaf branches & roses in champagne gold -->
+      <path d="M 0 0 C 40 10, 80 40, 100 80 C 110 100, 120 130, 120 150" stroke="#C5A059" stroke-width="1.5"
+        fill="none" />
+      <path d="M 0 0 C 15 25, 45 45, 80 50" stroke="#C5A059" stroke-width="1" fill="none" />
+      <!-- Soft leaf shapes -->
+      <path d="M 45 20 C 55 20, 60 10, 50 5 C 40 0, 35 10, 45 20 Z" fill="#E8D8B8" opacity="0.8" />
+      <path d="M 80 40 C 90 42, 92 32, 85 27 C 78 22, 75 32, 80 40 Z" fill="#E8D8B8" opacity="0.8" />
+      <path d="M 20 45 C 22 55, 12 60, 7 50 C 2 40, 12 35, 20 45 Z" fill="#E8D8B8" opacity="0.8" />
+      <path d="M 100 90 C 105 100, 95 105, 90 95 C 85 85, 95 80, 100 90 Z" fill="#E8D8B8" opacity="0.8" />
+      <!-- Rose silhouette details -->
+      <circle cx="30" cy="30" r="10" fill="#C5A059" opacity="0.2" />
+      <path d="M 30 20 C 25 22, 23 28, 26 33 C 29 38, 35 38, 38 33 C 41 28, 39 22, 34 20 C 32 19, 31 19, 30 20 Z"
+        stroke="#C5A059" stroke-width="1" fill="none" />
+      <circle cx="85" cy="75" r="8" fill="#C5A059" opacity="0.15" />
+      <path d="M 85 69 C 81 71, 80 75, 82 79 C 84 83, 88 83, 90 79 C 92 75, 91 71, 87 69 Z" stroke="#C5A059"
+        stroke-width="1" fill="none" />
+    </svg>
+  </div>
+  <div class="flower-corner top-right">
+    <!-- Reused mirrored in CSS -->
+    <svg viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 0 0 C 40 10, 80 40, 100 80 C 110 100, 120 130, 120 150" stroke="#C5A059" stroke-width="1.5"
+        fill="none" />
+      <path d="M 0 0 C 15 25, 45 45, 80 50" stroke="#C5A059" stroke-width="1" fill="none" />
+      <path d="M 45 20 C 55 20, 60 10, 50 5 C 40 0, 35 10, 45 20 Z" fill="#E8D8B8" opacity="0.8" />
+      <path d="M 80 40 C 90 42, 92 32, 85 27 C 78 22, 75 32, 80 40 Z" fill="#E8D8B8" opacity="0.8" />
+      <path d="M 20 45 C 22 55, 12 60, 7 50 C 2 40, 12 35, 20 45 Z" fill="#E8D8B8" opacity="0.8" />
+      <path d="M 100 90 C 105 100, 95 105, 90 95 C 85 85, 95 80, 100 90 Z" fill="#E8D8B8" opacity="0.8" />
+      <circle cx="30" cy="30" r="10" fill="#C5A059" opacity="0.2" />
+      <path d="M 30 20 C 25 22, 23 28, 26 33 C 29 38, 35 38, 38 33 C 41 28, 39 22, 34 20 C 32 19, 31 19, 30 20 Z"
+        stroke="#C5A059" stroke-width="1" fill="none" />
+    </svg>
+  </div>
+  <div class="flower-corner bottom-left">
+    <svg viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 0 0 C 40 10, 80 40, 100 80 C 110 100, 120 130, 120 150" stroke="#C5A059" stroke-width="1.5"
+        fill="none" />
+      <path d="M 45 20 C 55 20, 60 10, 50 5 C 40 0, 35 10, 45 20 Z" fill="#E8D8B8" opacity="0.8" />
+      <circle cx="30" cy="30" r="10" fill="#C5A059" opacity="0.2" />
+    </svg>
+  </div>
+  <div class="flower-corner bottom-right">
+    <svg viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 0 0 C 40 10, 80 40, 100 80 C 110 100, 120 130, 120 150" stroke="#C5A059" stroke-width="1.5"
+        fill="none" />
+      <path d="M 45 20 C 55 20, 60 10, 50 5 C 40 0, 35 10, 45 20 Z" fill="#E8D8B8" opacity="0.8" />
+      <circle cx="30" cy="30" r="10" fill="#C5A059" opacity="0.2" />
+    </svg>
+  </div>
+
+  <!-- 1. The Gates Hero Section (100vh) -->
+  <section class="hero-gate-sec" id="heroSec">
+
+    <!-- Background Content revealed behind the gates -->
+    <div class="gate-bg-container" id="gateBgContainer">
+      <div class="gate-couple-bg" id="gateCoupleBg"></div>
+      <div class="gate-bg-overlay"></div>
+
+      <!-- Invitation Card that fades/zooms in as we scroll -->
+      <div class="gate-invite-card card-shadow-premium" id="gateInviteCard">
+        <div class="card-inner-border">
+          <div class="card-monogram">J&M</div>
+          <p class="card-invite-text">Together with their families</p>
+          <h2 class="card-couple-names">Joy &amp; Marco</h2>
+          <p class="card-request">request the honor of your presence<br>at their marriage celebration</p>
+
+          <div class="card-date-venue">
+            <span class="card-date">Sunday, July 12, 2026</span>
+            <span class="card-separator">|</span>
+            <span class="card-venue">Jewel Elminya Hotel & club</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Intro Overlay (Cover overlay asking to Reveal) -->
+    <!-- <div class="intro-overlay" id="introOverlay">
+      <div class="intro-content">
+        <p class="intro-subtitle">You are cordially invited</p>
+        <h1 class="intro-title">J <span>&</span> M</h1>
+        <button class="begin-btn" id="beginBtn">
+          <span>Approach the Gates</span>
+          <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div> -->
+
+    <!-- The 3D Gate Wrapper -->
+    <div class="gate-wrapper" id="gateWrapper">
+      <!-- Left Gate Door (Inline SVG wrought iron) -->
+      <div class="gate-door left" id="gateDoorLeft">
+        <svg class="gate-svg" viewBox="0 0 400 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Wrought Iron Gate Frame -->
+          <rect x="10" y="10" width="385" height="780" rx="4" stroke="#1C1C1C" stroke-width="8" />
+          <rect x="22" y="22" width="361" height="756" rx="2" stroke="#C5A059" stroke-width="2" />
+          <!-- Vertical pickets -->
+          <line x1="70" y1="30" x2="70" y2="770" stroke="#1C1C1C" stroke-width="4" />
+          <path d="M70 12 L65 30 L75 30 Z" fill="#C5A059" />
+
+          <line x1="130" y1="30" x2="130" y2="770" stroke="#1C1C1C" stroke-width="4" />
+          <path d="M130 12 L125 30 L135 30 Z" fill="#C5A059" />
+
+          <line x1="190" y1="30" x2="190" y2="770" stroke="#1C1C1C" stroke-width="4" />
+          <path d="M190 12 L185 30 L195 30 Z" fill="#C5A059" />
+
+          <line x1="250" y1="30" x2="250" y2="770" stroke="#1C1C1C" stroke-width="4" />
+          <path d="M250 12 L245 30 L255 30 Z" fill="#C5A059" />
+
+          <line x1="310" y1="30" x2="310" y2="770" stroke="#1C1C1C" stroke-width="4" />
+          <path d="M310 12 L305 30 L315 30 Z" fill="#C5A059" />
+
+          <line x1="370" y1="30" x2="370" y2="770" stroke="#1C1C1C" stroke-width="4" />
+          <path d="M370 12 L365 30 L375 30 Z" fill="#C5A059" />
+
+          <!-- Ornate filigree scrollwork curves -->
+          <path d="M 22 150 C 90 110, 150 180, 250 130 C 310 100, 340 150, 378 120" stroke="#C5A059" stroke-width="2"
+            fill="none" />
+          <path d="M 22 250 C 90 210, 150 280, 250 230 C 310 200, 340 250, 378 220" stroke="#1C1C1C" stroke-width="2.5"
+            fill="none" />
+          <path d="M 22 550 C 90 510, 150 580, 250 530 C 310 500, 340 550, 378 520" stroke="#1C1C1C" stroke-width="2.5"
+            fill="none" />
+          <path d="M 22 650 C 90 610, 150 680, 250 630 C 310 600, 340 650, 378 620" stroke="#C5A059" stroke-width="2"
+            fill="none" />
+
+          <!-- Gold Center Monogram Half Circle -->
+          <path d="M 400 320 A 80 80 0 0 0 400 480" stroke="#C5A059" stroke-width="5" fill="none" />
+          <path d="M 400 330 A 70 70 0 0 0 400 470" stroke="#1C1C1C" stroke-width="2" fill="none" />
+          <text x="360" y="422" font-family="'Cormorant Garamond', serif" font-size="64" fill="#C5A059"
+            font-weight="300" text-anchor="middle">J</text>
+        </svg>
+      </div>
+
+      <!-- Right Gate Door (Inline SVG wrought iron) -->
+      <div class="gate-door right" id="gateDoorRight">
+        <svg class="gate-svg" viewBox="0 0 400 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Wrought Iron Gate Frame -->
+          <rect x="5" y="10" width="385" height="780" rx="4" stroke="#1C1C1C" stroke-width="8" />
+          <rect x="17" y="22" width="361" height="756" rx="2" stroke="#C5A059" stroke-width="2" />
+          <!-- Vertical pickets -->
+          <line x1="30" y1="30" x2="30" y2="770" stroke="#1C1C1C" stroke-width="4" />
+          <path d="M30 12 L25 30 L35 30 Z" fill="#C5A059" />
+
+          <line x1="90" y1="30" x2="90" y2="770" stroke="#1C1C1C" stroke-width="4" />
+          <path d="M90 12 L85 30 L95 30 Z" fill="#C5A059" />
+
+          <line x1="150" y1="30" x2="150" y2="770" stroke="#1C1C1C" stroke-width="4" />
+          <path d="M150 12 L145 30 L155 30 Z" fill="#C5A059" />
+
+          <line x1="210" y1="30" x2="210" y2="770" stroke="#1C1C1C" stroke-width="4" />
+          <path d="M210 12 L205 30 L215 30 Z" fill="#C5A059" />
+
+          <line x1="270" y1="30" x2="270" y2="770" stroke="#1C1C1C" stroke-width="4" />
+          <path d="M270 12 L265 30 L275 30 Z" fill="#C5A059" />
+
+          <line x1="330" y1="30" x2="330" y2="770" stroke="#1C1C1C" stroke-width="4" />
+          <path d="M330 12 L325 30 L335 30 Z" fill="#C5A059" />
+
+          <!-- Ornate filigree scrollwork curves -->
+          <path d="M 378 150 C 310 110, 250 180, 150 130 C 90 100, 60 150, 22 120" stroke="#C5A059" stroke-width="2"
+            fill="none" />
+          <path d="M 378 250 C 310 210, 250 280, 150 230 C 90 200, 60 250, 22 220" stroke="#1C1C1C" stroke-width="2.5"
+            fill="none" />
+          <path d="M 378 550 C 310 510, 250 580, 150 530 C 90 500, 60 550, 22 520" stroke="#1C1C1C" stroke-width="2.5"
+            fill="none" />
+          <path d="M 378 650 C 310 610, 250 680, 150 630 C 90 600, 60 650, 22 620" stroke="#C5A059" stroke-width="2"
+            fill="none" />
+
+          <!-- Gold Center Monogram Half Circle -->
+          <path d="M 0 320 A 80 80 0 0 1 0 480" stroke="#C5A059" stroke-width="5" fill="none" />
+          <path d="M 0 330 A 70 70 0 0 1 0 470" stroke="#1C1C1C" stroke-width="2" fill="none" />
+          <text x="40" y="422" font-family="'Cormorant Garamond', serif" font-size="64" fill="#C5A059" font-weight="300"
+            text-anchor="middle">M</text>
+        </svg>
+      </div>
+
+      <!-- Interactive Gate Lock/Handle Prompt -->
+      <div class="gate-lock-prompt" id="gateLockBtn">
+        <div class="lock-ring-glow"></div>
+        <div class="lock-label">Tap to Open Gate</div>
+      </div>
+    </div>
+
+    <!-- Scroll Prompt positioned UNDER the gates -->
+    <div class="card-scroll-prompt" id="heroScrollPrompt">
+      <span>Scroll to Step Inside</span>
+      <div class="scroll-arrow-down"></div>
+    </div>
+  </section>
+
+  <!-- Scroll Container for lenis smooth scroll -->
+  <div class="scroll-container" id="scrollContainer">
+
+    <!-- 2. Wedding Intro Section -->
+    <section class="intro-sec scroll-reveal" id="introSec">
+      <div class="container text-center">
+        <div class="gold-monogram-small">J & M</div>
+        <h3 class="section-subtitle">THE WEDDING CELEBRATION</h3>
+        <p class="quote-text font-serif italic">
+          "Once in a while, right in the middle of an ordinary life, love gives us a fairy tale."
+        </p>
+        <div class="intro-details">
+          <p class="intro-join">Join us as we write the next chapter of our story.</p>
+          <div class="intro-names">
+            <span class="groom-name">Marco Adel</span>
+            <span class="and-symbol">&amp;</span>
+            <span class="bride-name">Joy Mageed</span>
+          </div>
+          <p class="intro-families">Together with their parents,<br>Mr. Adel and Eng. Mageed</p>
+        </div>
+        <div class="gold-divider"></div>
+      </div>
+    </section>
+
+    <!-- 3. Story / Couple Section -->
+    <section class="story-sec scroll-reveal" id="storySec">
+      <div class="container">
+        <div class="story-grid">
+          <div class="story-image-wrapper card-shadow-premium">
+            <div class="story-img-container ken-burns">
+              <img src="assets/images/img-3.webp" alt="Marco & Joy ">
+            </div>
+            <div class="story-img-overlay"></div>
+          </div>
+          <div class="story-content-wrapper">
+            <h3 class="section-subtitle">OUR LOVE STORY</h3>
+            <h2 class="section-title">How It All Began</h2>
+            <div class="story-paragraphs font-serif">
+              <p><strong>Joy:</strong></p>
+              <p>Our love story began like a beautiful fairytale when Marko sent me a friend request on Facebook. What
+                started as a simple, innocent chat soon blossomed into something magical — a deep, soul-stirring
+                connection that made us inseparable. We quickly became the most important parts of each other's worlds,
+                two hearts beating in perfect harmony.</p>
+              <p>On January 3rd, 2022, we officially began our journey as a couple, and from that day forward, we chose
+                each other every single morning. Despite the doubts and whispers from others, our love only grew
+                stronger, deeper, and more passionate with time. After three extraordinary years filled with tender
+                support, endless laughter, and unwavering devotion, he made my dreams come true on January 7th, 2025,
+                when he got down on one knee and proposed.</p>
+              <p>That moment — when he looked into my eyes and asked me to be his forever — remains the most
+                breathtaking, heart-melting experience of my life. It was pure magic, overflowing with joy, gratitude,
+                and a love so profound it brought tears to my eyes. I will cherish that beautiful memory in my heart for
+                the rest of eternity. ❤️</p>
+            </div>
+            <div class="story-dates font-sans">
+              <div>
+                <strong>MET</strong>
+                <span>January 3, 2022</span>
+              </div>
+              <div class="dot-separator"></div>
+              <div>
+                <strong>PROPOSED</strong>
+                <span>January 7, 2025</span>
+              </div>
+              <div class="dot-separator"></div>
+              <div>
+                <strong>MARRIED</strong>
+                <span>July 12, 2026</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3.5 Q&A / Getting to Know Us Section -->
+    <section class="qa-sec scroll-reveal" id="qaSec">
+      <div class="container">
+        <div class="text-center">
+          <h3 class="section-subtitle">GETTING TO KNOW US</h3>
+          <h2 class="section-title">Questions & Answers</h2>
+        </div>
+
+        <div class="qa-grid">
+          <div class="qa-card card-shadow-premium">
+            <h4 class="qa-question">How did you two meet?</h4>
+            <div class="qa-answer">
+              <p><strong>Marco:</strong> In fact by luck 😂♥️ but i would prefer to keep this secret between me and my
+                wife ♥️😉</p>
+            </div>
+          </div>
+
+          <div class="qa-card card-shadow-premium">
+            <h4 class="qa-question">Who made the first move? How?</h4>
+            <div class="qa-answer">
+              <p><strong>Joy:</strong> He made the first move when he texted me on New Year's Day. A few hours later we
+                had plans together.</p>
+            </div>
+          </div>
+
+          <div class="qa-card card-shadow-premium">
+            <h4 class="qa-question">Who takes out the trash?</h4>
+            <div class="qa-answer">
+              <p>Whoever's closest to the trash :)</p>
+            </div>
+          </div>
+
+          <div class="qa-card card-shadow-premium">
+            <h4 class="qa-question">What's your most memorable date?</h4>
+            <div class="qa-answer">
+              <p><strong>Marco:</strong> One of the most deeply romantic and touching dates we shared was the day we
+                went out together right after my exams. I was completely exhausted and stressed, carrying a heavy secret
+                in my heart — something I believed could have ended our relationship long before it truly began.</p>
+              <p>Yet when I opened up and told Joy everything, she didn't pull away. Instead, she received my words with
+                such gentle calm, pure grace, and unconditional love that my fears melted away. There was no fight, no
+                drama — only understanding and warmth that wrapped around my soul like a soft embrace.</p>
+              <p>Even though I hadn't slept well the night before, I chose to stay by her side the entire day, from
+                sunrise until the stars filled the sky. We wandered, ate delicious food, shared sweet drinks, and
+                laughed until our hearts felt light again. In that moment, I realized how beautifully strong our love is
+                — how it can turn even the hardest days into something magical and unforgettable.</p>
+              <p>It remains one of the most precious and romantic times I've ever spent with Joy. ❤️</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Wedding Details Section -->
+    <section class="details-sec scroll-reveal" id="detailsSec">
+      <div class="container">
+        <div class="text-center">
+          <h3 class="section-subtitle">THE DETAILS</h3>
+          <h2 class="section-title">Where &amp; When</h2>
+        </div>
+
+        <div class="details-cards-grid">
+          <!-- Ceremony Card -->
+          <div class="details-card card-shadow-premium">
+            <div class="details-card-inner">
+              <div class="card-accent-top"></div>
+              <h4 class="details-title">The Church</h4>
+              <div class="details-time font-serif">
+                <p class="time-main">Church of St. George the Great Martyr</p>
+                <p class="time-sub">Sunday, July 12, 2026</p>
+              </div>
+              <div class="details-location">
+                <p class="venue-name font-serif">Sheikh Turk Street, Qism Minya</p>
+                <p class="venue-address">El Minya, Egypt</p>
+              </div>
+              <a href="https://maps.app.goo.gl/Bbk83ooJxmrdb4gp8" target="_blank" rel="noopener noreferrer"
+                class="details-map-btn">
+                <span>View on Map</span>
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="1.5" fill="none">
+                  <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Reception Card -->
+          <div class="details-card card-shadow-premium">
+            <div class="details-card-inner">
+              <div class="card-accent-top"></div>
+              <h4 class="details-title">The Venue</h4>
+              <div class="details-time font-serif">
+                <p class="time-main">Diamond Hall</p>
+                <p class="time-sub">Sunday, July 12, 2026</p>
+              </div>
+              <div class="details-location">
+                <p class="venue-name font-serif">Jewel Elminya Hotel&club ,Sharq El Nile, Downtown</p>
+                <p class="venue-address">El Minya, Egypt</p>
+              </div>
+              <a href="https://maps.app.goo.gl/SPB3VdfTtiZxk6vU9" target="_blank" rel="noopener noreferrer"
+                class="details-map-btn">
+                <span>View Location</span>
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="1.5" fill="none">
+                  <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. Timeline / Event Schedule -->
+    <section class="timeline-sec scroll-reveal" id="timelineSec">
+      <div class="container">
+        <div class="text-center">
+          <h3 class="section-subtitle">THE SEQUENCE OF EVENTS</h3>
+          <h2 class="section-title">Wedding Schedule</h2>
+        </div>
+
+        <div class="timeline-wrapper">
+          <div class="timeline-line"></div>
+
+          <div class="timeline-item left">
+            <div class="timeline-content card-shadow-premium">
+              <span class="timeline-time">6:30 PM</span>
+              <h4 class="timeline-title">Guest Arrival</h4>
+              <p class="timeline-desc">
+                Guests arrive at St. George Church, Minya.
+              </p>
+            </div>
+            <div class="timeline-dot"></div>
+          </div>
+
+          <div class="timeline-item right">
+            <div class="timeline-content card-shadow-premium">
+              <span class="timeline-time">7:00 PM</span>
+              <h4 class="timeline-title">Attend The Church</h4>
+              <p class="timeline-desc">
+                The wedding ceremony begins at St. George Church, Minya.
+              </p>
+            </div>
+            <div class="timeline-dot"></div>
+          </div>
+
+          <div class="timeline-item left">
+            <div class="timeline-content card-shadow-premium">
+              <span class="timeline-time">8:00 PM</span>
+              <h4 class="timeline-title">Wedding Celebration</h4>
+              <p class="timeline-desc">
+                Enjoy a memorable evening with music, and celebration with family and friends at Diamond Hall, Jewel
+                Minya Hotel & Club.
+              </p>
+            </div>
+            <div class="timeline-dot"></div>
+          </div>
+
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Monogram & Countdown Section -->
+    <section class="monogram-sec scroll-reveal" id="monogramSec">
+      <div class="monogram-bg-glow"></div>
+      <div class="container text-center">
+        <div class="monogram-shimmer" id="monogramShimmer">
+          J<span>&</span>M
+        </div>
+        <p class="monogram-sub font-serif italic">The twelfth of July, two thousand twenty-six</p>
+
+        <!-- Interactive Countdown Timer -->
+        <div class="countdown-container" id="countdownContainer">
+          <div class="countdown-item card-shadow-premium">
+            <span class="countdown-number" id="days">00</span>
+            <span class="countdown-label">Days</span>
+          </div>
+          <div class="countdown-item card-shadow-premium">
+            <span class="countdown-number" id="hours">00</span>
+            <span class="countdown-label">Hours</span>
+          </div>
+          <div class="countdown-item card-shadow-premium">
+            <span class="countdown-number" id="minutes">00</span>
+            <span class="countdown-label">Minutes</span>
+          </div>
+          <div class="countdown-item card-shadow-premium">
+            <span class="countdown-number" id="seconds">00</span>
+            <span class="countdown-label">Seconds</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Couple Gallery Section -->
+    <!-- <section class="gallery-sec scroll-reveal" id="gallerySec">
+      <div class="container">
+        <div class="text-center">
+          <h3 class="section-subtitle">CAPTURED MOMENTS</h3>
+          <h2 class="section-title">Our Moments</h2>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item item-large card-shadow-premium scroll-reveal-sub">
+            <div class="gallery-img-container ken-burns">
+              <img src="assets/images/couple-garden.png" alt="Walking under wisteria">
+            </div>
+            <div class="gallery-img-overlay">
+              <span class="gallery-caption">Under the white canopy</span>
+            </div>
+          </div>
+          <div class="gallery-item item-tall card-shadow-premium scroll-reveal-sub">
+            <div class="gallery-img-container ken-burns">
+              <img src="assets/images/wedding-details.png" alt="Dinner tables">
+            </div>
+            <div class="gallery-img-overlay">
+              <span class="gallery-caption">The celebration tables</span>
+            </div>
+          </div>
+          <div class="gallery-item item-square card-shadow-premium scroll-reveal-sub">
+            <div class="gallery-img-container ken-burns">
+              <img src="assets/images/wedding-rings.png" alt="Rings and hands">
+            </div>
+            <div class="gallery-img-overlay">
+              <span class="gallery-caption">A lifetime promise</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- 8. Final CTA / RSVP Section -->
+    <section class="rsvp-sec scroll-reveal" id="rsvpSec">
+      <div class="container">
+        <div class="rsvp-layout card-shadow-premium">
+          <div class="rsvp-card-border">
+            <div class="text-center">
+              <div class="rsvp-monogram">J&M</div>
+              <h2 class="rsvp-title">Kindly Respond</h2>
+              <p class="rsvp-deadline">Please reply by May 1, 2026</p>
+            </div>
+
+            <!-- RSVP Form -->
+            <form id="rsvpForm" class="rsvp-form">
+              <div class="form-row-grid">
+                <!-- Guest Name -->
+                <div class="input-group">
+                  <input type="text" id="guestName" name="guestName" required placeholder=" " autocomplete="off">
+                  <label for="guestName">Your Full Name</label>
+                  <span class="input-line"></span>
+                </div>
+              </div>
+
+              <!-- Attendance Choice -->
+              <div class="attendance-options">
+                <p class="options-label">Will you join us?</p>
+                <div class="radio-group-flex">
+                  <label class="radio-card">
+                    <input type="radio" name="attendance" value="accept" checked required>
+                    <span class="radio-custom"></span>
+                    <span class="radio-text font-serif">Joyfully Accepts</span>
+                  </label>
+                  <label class="radio-card">
+                    <input type="radio" name="attendance" value="decline">
+                    <span class="radio-custom"></span>
+                    <span class="radio-text font-serif">Regretfully Declines</span>
+                  </label>
+                </div>
+              </div>
+
+
+              <!-- Message/Wishes -->
+              <div class="input-group">
+                <textarea id="guestWishes" name="guestWishes" placeholder=" " rows="3"></textarea>
+                <label for="guestWishes">Warm Wishes or Message (Optional)</label>
+                <span class="input-line"></span>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="text-center button-container">
+                <button type="submit" class="submit-btn gold-shimmer-btn" id="submitBtn">
+                  <span>Send Response</span>
+                </button>
+              </div>
+            </form>
+
+            <!-- Success State -->
+            <div id="rsvpSuccess" class="rsvp-success-message hidden">
+              <div class="success-icon-gold">
+                <svg viewBox="0 0 24 24" width="36" height="36" stroke="currentColor" stroke-width="1" fill="none">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+              <h3 class="success-title">Thank You</h3>
+              <p class="success-desc" id="successText">Your response has been received. We are so excited to celebrate
+                with you!</p>
+              <button class="reset-rsvp-btn" id="resetRsvp">Edit Response</button>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="footer text-center">
+          <p class="footer-hashtag">#MarcoAndJoy2026</p>
+          <p class="footer-copyright">&copy; 2026 Developed With ❤️ By: <a class="developer"
+              href="https://www.linkedin.com/in/fady-malak-zaki/" target="_blank">FadyZaki</a>. All rights reserved.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- CDN dependencies for GSAP, ScrollTrigger, Lenis Smooth Scroll -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <!-- Lenis for smooth scroll -->
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+
+  <!-- Custom JS -->
+  <script src="script.js"></script>
+</body>
+
+</html>
