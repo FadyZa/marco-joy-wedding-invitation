@@ -254,62 +254,62 @@ h6 {
    Viewport Corner Flowers (Fixed framing system)
    ========================================================================== */
 .flower-corner {
-  position: fixed;
-  width: clamp(140px, 15vw, 220px);
-  height: clamp(140px, 15vw, 220px);
-  z-index: 150;
-  pointer-events: none;
-  opacity: 0.9;
-  transition: opacity 1s ease;
+    position: fixed;
+    width: clamp(220px, 22vw, 300px);
+    height: clamp(220px, 22vw, 300px);
+    z-index: 150;
+    pointer-events: none;
+    opacity: 0.9;
+    transition: opacity 1s ease;
 }
 
-.flower-corner svg {
-  width: 100%;
-  height: 100%;
-  display: block;
+.flower-corner img {
+    width: 100%;
+    height: 100%;
+    display: block;
 }
 
 .flower-corner.top-left {
-  top: 0;
-  left: 0;
+    top: 0;
+    left: 0;
 }
 
-.flower-corner.top-left svg {
-  animation: flowerSwayLeft 7s ease-in-out infinite alternate;
-  transform-origin: top left;
+.flower-corner.top-left img {
+    animation: flowerSwayLeft 7s ease-in-out infinite alternate;
+    transform-origin: top left;
 }
 
 .flower-corner.top-right {
-  top: 0;
-  right: 0;
-  transform: scaleX(-1);
+    top: 0;
+    right: 0;
+    transform: scaleX(1);
 }
 
 .flower-corner.top-right svg {
-  animation: flowerSwayLeft 7s ease-in-out infinite alternate 1.5s;
-  transform-origin: top left;
+    animation: flowerSwayLeft 7s ease-in-out infinite alternate 1.5s;
+    transform-origin: top left;
 }
 
 .flower-corner.bottom-left {
-  bottom: 0;
-  left: 0;
-  transform: scaleY(-1);
+    bottom: 0;
+    left: 0;
+    transform: scaleY(1);
 }
 
 .flower-corner.bottom-left svg {
-  animation: flowerSwayLeft 7s ease-in-out infinite alternate 3s;
-  transform-origin: top left;
+    animation: flowerSwayLeft 7s ease-in-out infinite alternate 3s;
+    transform-origin: top left;
 }
 
 .flower-corner.bottom-right {
-  bottom: 0;
-  right: 0;
-  transform: scale(-1);
+    bottom: 0;
+    right: 0;
+    transform: scale(1);
 }
 
-.flower-corner.bottom-right svg {
-  animation: flowerSwayLeft 7s ease-in-out infinite alternate 4.5s;
-  transform-origin: top left;
+.flower-corner.bottom-right img {
+    animation: flowerSwayLeft 7s ease-in-out infinite alternate 4.5s;
+    transform-origin: top left;
 }
 
 @keyframes flowerSwayLeft {
@@ -602,23 +602,21 @@ h6 {
 
 /* Scroll Prompt positioned under gates */
 .card-scroll-prompt {
-  position: absolute;
-  bottom: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-sans);
-  font-size: 0.95rem;
-  font-weight: bold;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gold-dark);
-  opacity: 0;
-  /* Animated visible once gate is open */
-  transition: opacity 1s ease;
-  z-index: 20;
-  pointer-events: none;
+   position: absolute;
+    bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-sans);
+    font-size: 16px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    opacity: 0;
+    transition: opacity 1s ease;
+    z-index: 20;
+    pointer-events: none;
 }
 
 .scroll-arrow-down {
