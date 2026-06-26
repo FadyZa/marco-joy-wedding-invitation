@@ -603,7 +603,7 @@ h6 {
 /* Scroll Prompt positioned under gates */
 .card-scroll-prompt {
    position: absolute;
-    bottom: 50px;
+    bottom: 90px;
     display: flex;
     flex-direction: column;
     align-items: center;
